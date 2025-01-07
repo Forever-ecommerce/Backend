@@ -112,9 +112,6 @@ const verifyStripe = async (req, res) => {
   }
 };
 
-//Placing orders using razorpay method
-
-const placeOrderRazorpay = async (req, res) => {};
 
 //All Orders data for admin panel
 const allOrders = async (req, res) => {
@@ -153,7 +150,6 @@ const updateStatus = async (req, res) => {
 
 export {
   placeOrder,
-  placeOrderRazorpay,
   placeOrderStripe,
   allOrders,
   userOrders,
