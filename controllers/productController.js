@@ -8,7 +8,7 @@ const addProduct = async (req, res) => {
   try {
     const { name, description, price, category, subCategory, sizes, bestSeller } = req.body;
     console.log(req.body)
-    const images = []; // Array to store image URLs
+    const images = []; 
 
     // Define the image fields to check
     const imageFields = ["image1", "image2", "image3", "image4"];
