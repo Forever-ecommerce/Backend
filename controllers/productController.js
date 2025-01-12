@@ -14,7 +14,7 @@ const addProduct = async (req, res) => {
     const imageFields = ["image1", "image2", "image3", "image4"];
 
     for (const field of imageFields) {
-      if (req.files[field] && Array.isArray(req.files[field])) { // Ensure each field is an array
+      if (req.files[field] && Array.isArray(req.files[field])) { 
         for (const file of req.files[field]) {
           try {
             const result = await cloudinary.uploader.upload(file.path, {
