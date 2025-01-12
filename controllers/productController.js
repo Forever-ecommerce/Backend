@@ -21,7 +21,7 @@ const addProduct = async (req, res) => {
               folder: "uploads"
             });
             console.log("field", result)
-            images.push(result.secure_url); // Add uploaded image URL
+            images.push(result.secure_url); 
             await fs.unlink(file.path); // Remove temp file
           } catch (uploadError) {
             console.error("Upload failed:", uploadError.message);
