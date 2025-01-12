@@ -8,21 +8,21 @@ const addProduct = async (req, res) => {
   try {
     const { name, description, price, category, subCategory, sizes, bestSeller } = req.body;
     console.log(req.body)
-    const images = []; 
+    const images = []; // Array to store image URLs
 
     // Define the image fields to check
     const imageFields = ["image1", "image2", "image3", "image4"];
 
     for (const field of imageFields) {
-      if (req.files[field] && Array.isArray(req.files[field])) { 
+      if (req.files[field] && Array.isArray(req.files[field])) { // Ensure each field is an array
         for (const file of req.files[field]) {
           try {
             const result = await cloudinary.uploader.upload(file.path, {
               folder: "uploads"
             });
             console.log("field", result)
-            images.push(result.secure_url); 
-            await fs.unlink(file.path); 
+            images.push(result.secure_url); // Add uploaded image URL
+            await fs.unlink(file.path); // Remove temp file
           } catch (uploadError) {
             console.error("Upload failed:", uploadError.message);
             return res.status(500).json({ success: false, message: "Image upload failed" });
