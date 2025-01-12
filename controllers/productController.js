@@ -22,7 +22,7 @@ const addProduct = async (req, res) => {
             });
             console.log("field", result)
             images.push(result.secure_url); 
-            await fs.unlink(file.path); // Remove temp file
+            await fs.unlink(file.path); 
           } catch (uploadError) {
             console.error("Upload failed:", uploadError.message);
             return res.status(500).json({ success: false, message: "Image upload failed" });
