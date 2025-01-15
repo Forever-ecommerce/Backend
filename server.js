@@ -20,7 +20,14 @@ connectDB();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://forever-r37qh6fwx-hashim-abdullahs-projects.vercel.app"],
+    origin: function(origin, callback) {
+      // Allow requests from any Vercel subdomain of your project
+      if (!origin || origin.match(/https:\/\/forever-.*?-hashim-abdullahs-projects\.vercel\.app$/)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
