@@ -8,6 +8,9 @@
     "build": "npm install",
     "postinstall": "npm rebuild bcrypt --build-from-source"
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
