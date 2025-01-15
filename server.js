@@ -18,7 +18,7 @@ connectDB();
 //Middlewares
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: ['https://forever-git-main-hashim-abdullahs-projects.vercel.app'] }));
 
 //API endpoints
 app.use("/api/user", userRouter);
@@ -33,4 +33,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on PORT : ${port}`);
 });
-
