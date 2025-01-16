@@ -21,8 +21,19 @@ app.use(express.json());
 app.use(
   cors({
     origin: function(origin, callback) {
-      // Allow requests from any Vercel subdomain of your project
-      if (!origin || origin.match(/https:\/\/forever-.*?-hashim-abdullahs-projects\.vercel\.app$/)) {
+      const allowedOrigins = [
+        'https://forever-roan.vercel.app',
+        'https://forever-git-main-hashim-abdullahs-projects.vercel.app',
+        'https://forever-p3f65s9sl-hashim-abdullahs-projects.vercel.app',
+        'http://localhost:3000',  // Add your local development port
+      ];
+      
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
